@@ -1,0 +1,6 @@
+framework module Pods_BAObjcJIT_Example {
+  umbrella header "Pods-BAObjcJIT_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
