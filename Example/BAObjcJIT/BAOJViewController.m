@@ -28,6 +28,12 @@
     testStr = @"testfunc(a, b, c)";
     testStr = @"aaaa.bbbb.cccc;";
     testStr = @"[a b:c d:@\"testStr\"];";
+    testStr = @" \
+NSString *content = @\"testStrContent\"; \
+for (NSInteger i=0; i<100; i++) { \
+    [testIns testFunc:content]; \
+} \
+";
     [BAObjcJIT run:testStr error:nil];
 }
 

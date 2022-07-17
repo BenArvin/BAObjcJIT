@@ -1,6 +1,0 @@
-framework module BAObjcJIT {
-  umbrella header "BAObjcJIT-umbrella.h"
-
-  export *
-  module * { export * }
-}
