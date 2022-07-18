@@ -7,58 +7,11 @@
 
 import Foundation
 
-//@objc public class BAObjcJITToken: NSObject {
-//    @objc public var type: BAObjcJITTokenType = .UNKNOWN
-//    @objc public var text: String?
-//    @objc public var line: Int = 0
-//    @objc public var column: Int = 0
-//    @objc public var indexStart: Int = 0
-//    @objc public var indexEnd: Int = 0
-//
-//    convenience init(type: BAObjcJITTokenType, text: String?, line: Int, column: Int, indexStart: Int, indexEnd: Int) {
-//        self.init()
-//        self.type = type
-//        self.text = text
-//        self.line = line
-//        self.column = column
-//        self.indexStart = indexStart
-//        self.indexEnd = indexEnd
-//    }
-//
-//    @objc public class func typeStr(from type: BAObjcJITTokenType) -> String {
-//        return String.init(format: "%d", type.rawValue)
-//    }
-//
-//    @objc public func typeStr() -> String {
-//        return Self.typeStr(from: self.type)
-//    }
-//}
-
-open class BAOJParseTreeVisitor<T>: AbstractParseTreeVisitor<T> {
-    open override func visitTerminal(_ node: TerminalNode) -> T? {
-        NSLog("%ld - %@ - %@", node.getSymbol()?.getType() ?? -1, node.getSymbol()?.getText() ?? "", node.getText())
-        return super.visitTerminal(node)
-    }
-    
-    open override func visitErrorNode(_ node: ErrorNode) -> T? {
-        return super.visitErrorNode(node)
-    }
-}
-
-class Node {
-    var level: Int = 0
-    var index: Int = 0
-    var typeStr: String?
-    var textStr: String?
-    
-    var items: [Node] = []
-}
-
-
+// MARK: - public methods
 @objc public class BAObjcAntlrBridge: NSObject {
-    @objc public class func createLexer(_ code: String?) {
+    @objc public class func parse(_ code: String?) -> BAOJIRUnit {
         guard let code = code else {
-            return
+            return BAOJIRUnit.init(valid: false, errorDesc: "Parse code failed: code is empty")
         }
         let stream = ANTLRInputStream.init(code)
         let lexer = ObjectiveCLexer.init(stream)
@@ -66,24 +19,34 @@ class Node {
         do {
             let parser = try BAObjectiveCParser.init(tokenStream)
             let parserTree = try parser.translationUnit()
-            
-            let umlStr = self.getUMLParseTree(parserTree)
-//            let xxx = parserTree.toStringTree(parser)
-            
-//            let visitor = BAOJParseTreeVisitor<String>.init()
-//            let result = visitor.visit(parserTree)
-            NSLog("")
+            let result = BAOJIRUnit.init(valid: true, errorDesc: nil)
+            self.buildIRUnit(unit: result, parserTree: parserTree)
+            return result
         } catch {
-            NSLog("")
+            return BAOJIRUnit.init(valid: false, errorDesc: String.init(format: "Parse code failed: %@", error.localizedDescription))
+        }
+    }
+}
+
+// MARK: - build IR unit
+extension BAObjcAntlrBridge {
+    private class func buildIRUnit(unit: BAOJIRUnit, parserTree: ParserRuleContext) {
+        
+    }
+}
+
+// MARK: - private methods
+extension BAObjcAntlrBridge {
+    private class func getPlantUMLStr(_ parseTree: ParserRuleContext) -> String {
+        class Node {
+            var level: Int = 0
+            var index: Int = 0
+            var typeStr: String?
+            var textStr: String?
+            
+            var items: [Node] = []
         }
         
-        NSLog("")
-    }
-    
-    private class func getUMLParseTree(_ parseTree: ParserRuleContext?) -> String {
-        guard let parseTree = parseTree else {
-            return ""
-        }
         var allNodes: [Node] = []
         let root: Node = Node()
         root.textStr = parseTree.getText()

@@ -11,7 +11,7 @@
 @implementation BAObjcJIT
 
 + (void)run:(NSString *)code error:(NSError **)error {
-    [BAObjcAntlrBridge createLexer:code];
+    [BAObjcAntlrBridge parse:code];
 }
 
 @end
