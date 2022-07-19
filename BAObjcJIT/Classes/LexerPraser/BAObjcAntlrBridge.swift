@@ -14,13 +14,12 @@ import Foundation
             return BAOJIRUnit.init(valid: false, errorDesc: "Parse code failed: code is empty")
         }
         let stream = ANTLRInputStream.init(code)
-        let lexer = ObjectiveCLexer.init(stream)
+        let lexer = BAObjectiveCLexer.init(stream)
         let tokenStream = CommonTokenStream.init(lexer)
         do {
             let parser = try BAObjectiveCParser.init(tokenStream)
             let parserTree = try parser.translationUnit()
-            let result = BAOJIRUnit.init(valid: true, errorDesc: nil)
-            self.buildIRUnit(unit: result, parserTree: parserTree)
+            let result = BAOJIRCreator.init(parserTree: parserTree).createIRUnit()
             return result
         } catch {
             return BAOJIRUnit.init(valid: false, errorDesc: String.init(format: "Parse code failed: %@", error.localizedDescription))
@@ -28,16 +27,9 @@ import Foundation
     }
 }
 
-// MARK: - build IR unit
-extension BAObjcAntlrBridge {
-    private class func buildIRUnit(unit: BAOJIRUnit, parserTree: ParserRuleContext) {
-        
-    }
-}
-
 // MARK: - private methods
 extension BAObjcAntlrBridge {
-    private class func getPlantUMLStr(_ parseTree: ParserRuleContext) -> String {
+    private class func _getPlantUMLStr(_ parseTree: ParserRuleContext) -> String {
         class Node {
             var level: Int = 0
             var index: Int = 0

@@ -9,14 +9,45 @@ import Foundation
 
 @objc open class BAOJIRUnit: NSObject {
     @objc public var valid: Bool = false
-    @objc public var enterCmdID: String? = nil
+    @objc public var entry: String? = nil
     @objc public var commands: NSDictionary? = nil
     @objc public var errorDesc: String? = nil
     
-    convenience init(valid: Bool, errorDesc: String?) {
+    @objc public override init() {
+        super.init()
+        self.commands = NSDictionary.init(object: BAOJIRCommandStart.init(), forKey: BAOJIRCommandStart.defaultID() as NSCopying)
+        self.entry = BAOJIRCommandStart.defaultID()
+    }
+    
+    @objc convenience init(valid: Bool, errorDesc: String?) {
         self.init()
         self.valid = valid
         self.errorDesc = errorDesc
+    }
+    
+    @objc func addCommand(ID: String, command: BAOJIRCommand) {
+        if ID.isEmpty {
+            return
+        }
+        if let commands = commands {
+            let newDic = NSMutableDictionary.init(dictionary: commands)
+            newDic.setObject(command, forKey: ID as NSCopying)
+            self.commands = newDic
+        } else {
+            self.commands = NSDictionary.init(object: command, forKey: ID as NSCopying)
+        }
+    }
+    
+    @objc func deleteCommand(ID: String) {
+        if ID.isEmpty {
+            return
+        }
+        guard let commands = commands else {
+            return
+        }
+        let newDic = NSMutableDictionary.init(dictionary: commands)
+        newDic.removeObject(forKey: ID)
+        self.commands = newDic
     }
 }
 

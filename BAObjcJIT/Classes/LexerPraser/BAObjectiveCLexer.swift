@@ -1,13 +1,13 @@
 // Generated from ObjectiveCLexer.g4 by ANTLR 4.10.1
 //import Antlr4
 
-open class ObjectiveCLexer: Lexer {
+open class BAObjectiveCLexer: Lexer {
 
 	internal static var _decisionToDFA: [DFA] = {
           var decisionToDFA = [DFA]()
-          let length = ObjectiveCLexer._ATN.getNumberOfDecisions()
+          let length = BAObjectiveCLexer._ATN.getNumberOfDecisions()
           for i in 0..<length {
-          	    decisionToDFA.append(DFA(ObjectiveCLexer._ATN.getDecisionState(i)!, i))
+          	    decisionToDFA.append(DFA(BAObjectiveCLexer._ATN.getDecisionState(i)!, i))
           }
            return decisionToDFA
      }()
@@ -203,33 +203,33 @@ open class ObjectiveCLexer: Lexer {
 
 	override open
 	func getVocabulary() -> Vocabulary {
-		return ObjectiveCLexer.VOCABULARY
+		return BAObjectiveCLexer.VOCABULARY
 	}
 
 	public
 	required init(_ input: CharStream) {
 	    RuntimeMetaData.checkVersion("4.10.1", RuntimeMetaData.VERSION)
 		super.init(input)
-		_interp = LexerATNSimulator(self, ObjectiveCLexer._ATN, ObjectiveCLexer._decisionToDFA, ObjectiveCLexer._sharedContextCache)
+		_interp = LexerATNSimulator(self, BAObjectiveCLexer._ATN, BAObjectiveCLexer._decisionToDFA, BAObjectiveCLexer._sharedContextCache)
 	}
 
 	override open
-	func getGrammarFileName() -> String { return "ObjectiveCLexer.g4" }
+	func getGrammarFileName() -> String { return "BAObjectiveCLexer.g4" }
 
 	override open
-	func getRuleNames() -> [String] { return ObjectiveCLexer.ruleNames }
+	func getRuleNames() -> [String] { return BAObjectiveCLexer.ruleNames }
 
 	override open
-	func getSerializedATN() -> [Int] { return ObjectiveCLexer._serializedATN }
+	func getSerializedATN() -> [Int] { return BAObjectiveCLexer._serializedATN }
 
 	override open
-	func getChannelNames() -> [String] { return ObjectiveCLexer.channelNames }
+	func getChannelNames() -> [String] { return BAObjectiveCLexer.channelNames }
 
 	override open
-	func getModeNames() -> [String] { return ObjectiveCLexer.modeNames }
+	func getModeNames() -> [String] { return BAObjectiveCLexer.modeNames }
 
 	override open
-	func getATN() -> ATN { return ObjectiveCLexer._ATN }
+	func getATN() -> ATN { return BAObjectiveCLexer._ATN }
 
 	static let _serializedATN:[Int] = [
 		4,0,222,2529,6,-1,6,-1,6,-1,6,-1,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,

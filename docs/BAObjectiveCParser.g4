@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 parser grammar BAObjectiveCParser;
 
-options { tokenVocab=ObjectiveCLexer; }
+options { tokenVocab=BAObjectiveCLexer; }
 
 translationUnit
     : topLevelDeclaration* EOF
