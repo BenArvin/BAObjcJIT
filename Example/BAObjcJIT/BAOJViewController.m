@@ -29,9 +29,10 @@
     testStr = @"aaaa.bbbb.cccc;";
     testStr = @"[a b:c d:@\"testStr\"];";
     testStr = @" \
-NSString *content = @\"testStrContent\"; \
+NSString *contentA = @\"testStrContent\"; \
+NSString *contentB = [TestClass testClsFunc]; \
 for (NSInteger i=0; i<100; i++) { \
-    [testIns testFunc:content]; \
+    [testIns testInsFunc:content content2:contentB]; \
 } \
 ";
     [BAObjcJIT run:testStr error:nil];
