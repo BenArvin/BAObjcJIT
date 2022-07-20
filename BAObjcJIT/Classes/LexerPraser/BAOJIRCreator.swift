@@ -7,6 +7,31 @@
 
 import Foundation
 
+fileprivate class CommandIDStack: NSObject {
+    private var contents: [String] = []
+    
+    fileprivate func isEmpty() -> Bool {
+        return (self.contents.count <= 0)
+    }
+    
+    fileprivate func count() -> Int {
+        return self.contents.count
+    }
+    
+    fileprivate func push(_ ID: String) {
+        self.contents.append(ID)
+    }
+    
+    fileprivate func pop() -> String? {
+        if self.contents.count <= 0 {
+            return nil
+        }
+        let result = self.contents.last
+        self.contents.removeLast()
+        return result
+    }
+}
+
 open class BAOJIRCreator: NSObject {
     public var parserTree: ParserRuleContext? = nil
     
@@ -32,9 +57,9 @@ extension BAOJIRCreator {
         self._irUnit = BAOJIRUnit.init(valid: true, errorDesc: nil)
     }
     
-    private func _onFailed(_ errorDesc: String?) {
+    private func _onFailed(_ node: ParseTree, _ errorDesc: String?) {
         self._irUnit?.valid = false
-        self._irUnit?.errorDesc = errorDesc
+        self._irUnit?.errorDesc = String.init(format: "%@: %@ | %@", errorDesc ?? "unknown", String(describing: type(of: node)), node.getText())
     }
     
     private func _traverseAction(_ node: ParseTree) {
@@ -66,11 +91,11 @@ extension BAOJIRCreator {
             let item = children[i]
             if i == children.count - 1 {
                 guard let termianlNode = item as? TerminalNodeImpl else {
-                    self._onFailed(String.init(format: "last context must be TerminalNodeImpl: %@ | %@", String(describing: type(of: item)), item.getText()))
+                    self._onFailed(item, "last context must be TerminalNodeImpl")
                     return false
                 }
                 if termianlNode.symbol.getType() != BAObjectiveCParser.Tokens.EOF.rawValue {
-                    self._onFailed(String.init(format: "last TerminalNodeImpl must be EOF: %@ | %@", String(describing: type(of: item)), item.getText()))
+                    self._onFailed(item, "last TerminalNodeImpl must be EOF")
                     return false
                 }
                 return true
@@ -89,20 +114,20 @@ extension BAOJIRCreator {
     
     private func _onTopDeclarationNode(_ node: BAObjectiveCParser.TopLevelDeclarationContext) -> Bool {
         guard let children = node.children else {
-            self._onFailed(String.init(format: "children of top level decl context is nil: %@ | %@", String(describing: type(of: node)), node.getText()))
+            self._onFailed(node, "children of top level decl context is nil")
             return false
         }
         for item in children {
-            if let stateNode = item as? BAObjectiveCParser.StatementContext {
-                if !self._onStatementNode(stateNode) {
+            if let itemTmp = item as? BAObjectiveCParser.StatementContext {
+                if !self._onStatementNode(itemTmp) {
                     return false
                 }
-            } else if let declNode = item as? BAObjectiveCParser.DeclarationContext {
-                if !self._onDeclarationNode(declNode) {
+            } else if let itemTmp = item as? BAObjectiveCParser.DeclarationContext {
+                if !self._onDeclarationNode(itemTmp) {
                     return false
                 }
             } else {
-                self._onFailed(String.init(format: "unknown node type in children of top level decl context: %@ | %@", String(describing: type(of: item)), item.getText()))
+                self._onFailed(item, "unknown node type in children of top level decl context")
                 return false
             }
         }
@@ -110,23 +135,64 @@ extension BAOJIRCreator {
     }
     
     private func _onDeclarationNode(_ node: BAObjectiveCParser.DeclarationContext) -> Bool {
+        guard let children = node.children, children.count == 1, let child = children.first else {
+            self._onFailed(node, "must and only one child of DeclarationContext")
+            return false
+        }
+        if let childTmp = child as? BAObjectiveCParser.VarDeclarationContext {
+            return self._onVarDeclarationNode(childTmp)
+        } else {
+            self._onFailed(child, "unknown DeclarationContext type")
+            return false
+        }
+    }
+    
+    private func _onVarDeclarationNode(_ node: BAObjectiveCParser.VarDeclarationContext) -> Bool {
         return true
     }
     
     private func _onStatementNode(_ node: BAObjectiveCParser.StatementContext) -> Bool {
-        guard let children = node.children else {
+        guard let children = node.children, children.count == 1, let child = children.first else {
+            self._onFailed(node, "must and only one child of StatementContext")
             return false
         }
-        for j in 0..<children.count {
-            if let childItem = children[j] as? ParseTree {
-                self._traverseAction(childItem)
-            }
+        if let childTmp = child as? BAObjectiveCParser.IterationStatementContext {
+            return self._onIterationStatementNode(childTmp)
+        } else if let childTmp = child as? BAObjectiveCParser.CompoundStatementContext {
+            return self._onCompoundStatementNode(childTmp)
+        } else if let childTmp = child as? BAObjectiveCParser.SelectionStatementContext {
+            return self._onSelectionStatementNode(childTmp)
+        } else if let childTmp = child as? BAObjectiveCParser.ExpressionContext {
+            return self._onExpressionNode(childTmp)
+        } else {
+            self._onFailed(child, "unknown StatementContext type")
+            return false
         }
-        return true
     }
     
     private func _onIterationStatementNode(_ node: BAObjectiveCParser.IterationStatementContext) -> Bool {
         return true
+    }
+    
+    private func _onCompoundStatementNode(_ node: BAObjectiveCParser.CompoundStatementContext) -> Bool {
+        return true
+    }
+    
+    private func _onSelectionStatementNode(_ node: BAObjectiveCParser.SelectionStatementContext) -> Bool {
+        return true
+    }
+    
+    private func _onExpressionNode(_ node: BAObjectiveCParser.ExpressionContext) -> Bool {
+        guard let children = node.children else {
+            self._onFailed(node, "children of ExpressionContext is nil")
+            return false
+        }
+        if children.count == 1 {
+            return true
+        } else {
+//            self._onFailed(String.init(format: "unknown StatementContext type: %@ | %@", String(describing: type(of: child)), child.getText()))
+            return false
+        }
     }
     
     private func _onTerminalNode(_ node: TerminalNodeImpl) -> Bool {
