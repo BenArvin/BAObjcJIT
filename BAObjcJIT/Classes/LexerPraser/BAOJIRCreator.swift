@@ -188,11 +188,95 @@ extension BAOJIRCreator {
             return false
         }
         if children.count == 1 {
-            return true
+            if let castChild = children.first as? BAObjectiveCParser.CastExpressionContext {
+                return self._onCastExpressionNode(castChild)
+            } else {
+                self._onFailed(node, "resolve ExpressionContext failed")
+                return true
+            }
         } else {
-//            self._onFailed(String.init(format: "unknown StatementContext type: %@ | %@", String(describing: type(of: child)), child.getText()))
+            self._onFailed(node, "resolve ExpressionContext failed")
             return false
         }
+    }
+    
+    private func _onCastExpressionNode(_ node: BAObjectiveCParser.CastExpressionContext) -> Bool {
+        guard let children = node.children else {
+            self._onFailed(node, "children of CastExpressionContext is nil")
+            return false
+        }
+        if children.count == 1 {
+            if let unaryChild = children.first as? BAObjectiveCParser.UnaryOperatorContext {
+                return self._onUnaryOperatorNode(unaryChild)
+            } else {
+                self._onFailed(node, "resolve CastExpressionContext failed")
+                return true
+            }
+        } else {
+            self._onFailed(node, "resolve CastExpressionContext failed")
+            return false
+        }
+    }
+    
+    private func _onUnaryOperatorNode(_ node: BAObjectiveCParser.UnaryOperatorContext) -> Bool {
+        guard let children = node.children else {
+            self._onFailed(node, "children of UnaryOperatorContext is nil")
+            return false
+        }
+        if children.count == 1 {
+            if let postfixChild = children.first as? BAObjectiveCParser.PostfixExpressionContext {
+                return self._onPostfixExpressionNode(postfixChild)
+            } else {
+                self._onFailed(node, "resolve UnaryOperatorContext failed")
+                return true
+            }
+        } else {
+            self._onFailed(node, "resolve UnaryOperatorContext failed")
+            return false
+        }
+    }
+    
+    private func _onPostfixExpressionNode(_ node: BAObjectiveCParser.PostfixExpressionContext) -> Bool {
+        guard let children = node.children else {
+            self._onFailed(node, "children of PostfixExpressionContext is nil")
+            return false
+        }
+        if let firstChild = children.first as? BAObjectiveCParser.PrimaryExpressionContext {
+            return self._onPrimaryExpressionNode(firstChild)
+        } else {
+            self._onFailed(node, "resolve PostfixExpressionContext failed")
+            return false
+        }
+    }
+    
+    private func _onPrimaryExpressionNode(_ node: BAObjectiveCParser.PrimaryExpressionContext) -> Bool {
+        guard let children = node.children else {
+            self._onFailed(node, "children of PrimaryExpressionContext is nil")
+            return false
+        }
+        if let firstChild = children.first as? BAObjectiveCParser.MessageExpressionContext {
+            return self._onMessageExpressionNode(firstChild)
+        } else {
+            self._onFailed(node, "resolve PrimaryExpressionContext failed")
+            return false
+        }
+    }
+    
+    private func _onMessageExpressionNode(_ node: BAObjectiveCParser.MessageExpressionContext) -> Bool {
+        guard let children = node.children, children.count == 4 else {
+            self._onFailed(node, "must and only four child of MessageExpressionContext")
+            return false
+        }
+        guard let firstChild = children.first as? TerminalNodeImpl, firstChild.symbol.getType() == BAObjectiveCParser.Tokens.LBRACK.rawValue,
+              let lastChild = children.last as? TerminalNodeImpl, lastChild.symbol.getType() == BAObjectiveCParser.Tokens.RBRACK.rawValue else {
+            self._onFailed(node, "resolve MessageExpressionContext failed, first and last node is invalid")
+            return false
+        }
+        guard let receiverNode = children[1] as? BAObjectiveCParser.ReceiverContext, let selNode = children[2] as? BAObjectiveCParser.MessageSelectorContext else {
+            self._onFailed(node, "resolve MessageExpressionContext failed, first and last node is invalid")
+            return false
+        }
+        return true
     }
     
     private func _onTerminalNode(_ node: TerminalNodeImpl) -> Bool {

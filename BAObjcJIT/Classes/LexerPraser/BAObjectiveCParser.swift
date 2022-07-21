@@ -267,6 +267,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_translationUnit
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTranslationUnit(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTranslationUnit(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func translationUnit() throws -> TranslationUnitContext {
@@ -332,6 +344,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_topLevelDeclaration
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTopLevelDeclaration(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTopLevelDeclaration(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func topLevelDeclaration() throws -> TopLevelDeclarationContext {
@@ -393,6 +417,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_genericTypeSpecifier
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterGenericTypeSpecifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitGenericTypeSpecifier(self)
+			}
 		}
 	}
 	@discardableResult
@@ -458,6 +494,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_protocolList
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterProtocolList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitProtocolList(self)
+			}
 		}
 	}
 	@discardableResult
@@ -530,6 +578,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_protocolName
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterProtocolName(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitProtocolName(self)
+			}
 		}
 	}
 	@discardableResult
@@ -654,6 +714,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_selector
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSelector(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSelector(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func selector() throws -> SelectorContext {
@@ -776,6 +848,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_blockType
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterBlockType(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitBlockType(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func blockType() throws -> BlockTypeContext {
@@ -890,6 +974,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_genericsSpecifier
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterGenericsSpecifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitGenericsSpecifier(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func genericsSpecifier() throws -> GenericsSpecifierContext {
@@ -976,6 +1072,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typeSpecifierWithPrefixes
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypeSpecifierWithPrefixes(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypeSpecifierWithPrefixes(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func typeSpecifierWithPrefixes() throws -> TypeSpecifierWithPrefixesContext {
@@ -1060,6 +1168,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_dictionaryExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterDictionaryExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitDictionaryExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -1161,6 +1281,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_dictionaryPair
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterDictionaryPair(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitDictionaryPair(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func dictionaryPair() throws -> DictionaryPairContext {
@@ -1213,6 +1345,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_arrayExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterArrayExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitArrayExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -1308,6 +1452,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_boxExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterBoxExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitBoxExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -1460,6 +1616,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_blockParameters
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterBlockParameters(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitBlockParameters(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func blockParameters() throws -> BlockParametersContext {
@@ -1551,6 +1719,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typeVariableDeclaratorOrName
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypeVariableDeclaratorOrName(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypeVariableDeclaratorOrName(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func typeVariableDeclaratorOrName() throws -> TypeVariableDeclaratorOrNameContext {
@@ -1612,6 +1792,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_blockExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterBlockExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitBlockExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -1700,6 +1892,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_messageExpression
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterMessageExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitMessageExpression(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func messageExpression() throws -> MessageExpressionContext {
@@ -1742,6 +1946,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_receiver
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterReceiver(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitReceiver(self)
+			}
 		}
 	}
 	@discardableResult
@@ -1796,6 +2012,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_messageSelector
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterMessageSelector(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitMessageSelector(self)
+			}
 		}
 	}
 	@discardableResult
@@ -1884,6 +2112,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_keywordArgument
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterKeywordArgument(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitKeywordArgument(self)
+			}
 		}
 	}
 	@discardableResult
@@ -1975,6 +2215,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_keywordArgumentType
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterKeywordArgumentType(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitKeywordArgumentType(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func keywordArgumentType() throws -> KeywordArgumentTypeContext {
@@ -2048,6 +2300,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_selectorExpression
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSelectorExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSelectorExpression(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func selectorExpression() throws -> SelectorExpressionContext {
@@ -2098,6 +2362,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_selectorName
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSelectorName(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSelectorName(self)
+			}
 		}
 	}
 	@discardableResult
@@ -2199,6 +2475,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_protocolExpression
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterProtocolExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitProtocolExpression(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func protocolExpression() throws -> ProtocolExpressionContext {
@@ -2250,6 +2538,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_encodeExpression
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterEncodeExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitEncodeExpression(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func encodeExpression() throws -> EncodeExpressionContext {
@@ -2292,6 +2592,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typeVariableDeclarator
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypeVariableDeclarator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypeVariableDeclarator(self)
+			}
 		}
 	}
 	@discardableResult
@@ -2343,6 +2655,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_throwStatement
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterThrowStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitThrowStatement(self)
+			}
 		}
 	}
 	@discardableResult
@@ -2419,6 +2743,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_tryBlock
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTryBlock(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTryBlock(self)
+			}
 		}
 	}
 	@discardableResult
@@ -2511,6 +2847,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_catchStatement
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterCatchStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitCatchStatement(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func catchStatement() throws -> CatchStatementContext {
@@ -2568,6 +2916,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_synchronizedStatement
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSynchronizedStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSynchronizedStatement(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func synchronizedStatement() throws -> SynchronizedStatementContext {
@@ -2612,6 +2972,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_autoreleaseStatement
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAutoreleaseStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAutoreleaseStatement(self)
+			}
 		}
 	}
 	@discardableResult
@@ -2667,6 +3039,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_functionSignature
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterFunctionSignature(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitFunctionSignature(self)
+			}
 		}
 	}
 	@discardableResult
@@ -2755,6 +3139,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_attribute
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAttribute(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAttribute(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func attribute() throws -> AttributeContext {
@@ -2805,6 +3201,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_attributeName
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAttributeName(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAttributeName(self)
+			}
 		}
 	}
 	@discardableResult
@@ -2907,6 +3315,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_attributeParameters
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAttributeParameters(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAttributeParameters(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func attributeParameters() throws -> AttributeParametersContext {
@@ -2979,6 +3399,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_attributeParameterList
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAttributeParameterList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAttributeParameterList(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func attributeParameterList() throws -> AttributeParameterListContext {
@@ -3042,6 +3474,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_attributeParameter
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAttributeParameter(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAttributeParameter(self)
+			}
 		}
 	}
 	@discardableResult
@@ -3116,6 +3560,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_attributeParameterAssignment
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAttributeParameterAssignment(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAttributeParameterAssignment(self)
+			}
 		}
 	}
 	@discardableResult
@@ -3246,6 +3702,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_declaration
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterDeclaration(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitDeclaration(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func declaration() throws -> DeclarationContext {
@@ -3327,6 +3795,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_functionCallExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterFunctionCallExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitFunctionCallExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -3411,6 +3891,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_enumDeclaration
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterEnumDeclaration(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitEnumDeclaration(self)
+			}
 		}
 	}
 	@discardableResult
@@ -3502,6 +3994,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_varDeclaration
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterVarDeclaration(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitVarDeclaration(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func varDeclaration() throws -> VarDeclarationContext {
@@ -3567,6 +4071,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typedefDeclaration
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypedefDeclaration(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypedefDeclaration(self)
+			}
 		}
 	}
 	@discardableResult
@@ -3646,6 +4162,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typeDeclaratorList
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypeDeclaratorList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypeDeclaratorList(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func typeDeclaratorList() throws -> TypeDeclaratorListContext {
@@ -3701,6 +4229,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typeDeclarator
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypeDeclarator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypeDeclarator(self)
+			}
 		}
 	}
 	@discardableResult
@@ -3808,6 +4348,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_declarationSpecifiers
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterDeclarationSpecifiers(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitDeclarationSpecifiers(self)
+			}
 		}
 	}
 	@discardableResult
@@ -3933,6 +4485,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_attributeSpecifier
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAttributeSpecifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAttributeSpecifier(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func attributeSpecifier() throws -> AttributeSpecifierContext {
@@ -4007,6 +4571,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_initDeclaratorList
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterInitDeclaratorList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitInitDeclaratorList(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func initDeclaratorList() throws -> InitDeclaratorListContext {
@@ -4066,6 +4642,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_initDeclarator
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterInitDeclarator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitInitDeclarator(self)
+			}
 		}
 	}
 	@discardableResult
@@ -4139,6 +4727,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_structOrUnionSpecifier
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterStructOrUnionSpecifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitStructOrUnionSpecifier(self)
+			}
 		}
 	}
 	@discardableResult
@@ -4257,6 +4857,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_fieldDeclaration
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterFieldDeclaration(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitFieldDeclaration(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func fieldDeclaration() throws -> FieldDeclarationContext {
@@ -4359,6 +4971,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_specifierQualifierList
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSpecifierQualifierList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSpecifierQualifierList(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func specifierQualifierList() throws -> SpecifierQualifierListContext {
@@ -4457,6 +5081,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_ibOutletQualifier
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterIbOutletQualifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitIbOutletQualifier(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func ibOutletQualifier() throws -> IbOutletQualifierContext {
@@ -4523,6 +5159,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_arcBehaviourSpecifier
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterArcBehaviourSpecifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitArcBehaviourSpecifier(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func arcBehaviourSpecifier() throws -> ArcBehaviourSpecifierContext {
@@ -4583,6 +5231,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_nullabilitySpecifier
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterNullabilitySpecifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitNullabilitySpecifier(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func nullabilitySpecifier() throws -> NullabilitySpecifierContext {
@@ -4642,6 +5302,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_storageClassSpecifier
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterStorageClassSpecifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitStorageClassSpecifier(self)
+			}
 		}
 	}
 	@discardableResult
@@ -4715,6 +5387,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typePrefix
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypePrefix(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypePrefix(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func typePrefix() throws -> TypePrefixContext {
@@ -4775,6 +5459,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typeQualifier
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypeQualifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypeQualifier(self)
+			}
 		}
 	}
 	@discardableResult
@@ -4861,6 +5557,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_protocolQualifier
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterProtocolQualifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitProtocolQualifier(self)
+			}
 		}
 	}
 	@discardableResult
@@ -4965,6 +5673,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typeSpecifier
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypeSpecifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypeSpecifier(self)
+			}
 		}
 	}
 	@discardableResult
@@ -5106,6 +5826,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typeofExpression
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypeofExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypeofExpression(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func typeofExpression() throws -> TypeofExpressionContext {
@@ -5158,6 +5890,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_fieldDeclaratorList
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterFieldDeclaratorList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitFieldDeclaratorList(self)
+			}
 		}
 	}
 	@discardableResult
@@ -5218,6 +5962,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_fieldDeclarator
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterFieldDeclarator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitFieldDeclarator(self)
+			}
 		}
 	}
 	@discardableResult
@@ -5335,6 +6091,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_enumSpecifier
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterEnumSpecifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitEnumSpecifier(self)
+			}
 		}
 	}
 	@discardableResult
@@ -5537,6 +6305,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_enumeratorList
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterEnumeratorList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitEnumeratorList(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func enumeratorList() throws -> EnumeratorListContext {
@@ -5609,6 +6389,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_enumerator
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterEnumerator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitEnumerator(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func enumerator() throws -> EnumeratorContext {
@@ -5661,6 +6453,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_enumeratorIdentifier
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterEnumeratorIdentifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitEnumeratorIdentifier(self)
+			}
 		}
 	}
 	@discardableResult
@@ -5787,6 +6591,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_directDeclarator
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterDirectDeclarator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitDirectDeclarator(self)
+			}
 		}
 	}
 	@discardableResult
@@ -5960,6 +6776,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_declaratorSuffix
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterDeclaratorSuffix(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitDeclaratorSuffix(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func declaratorSuffix() throws -> DeclaratorSuffixContext {
@@ -6028,6 +6856,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_parameterList
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterParameterList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitParameterList(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func parameterList() throws -> ParameterListContext {
@@ -6084,6 +6924,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_pointer
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterPointer(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitPointer(self)
+			}
 		}
 	}
 	@discardableResult
@@ -6161,6 +7013,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_macro
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterMacro(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitMacro(self)
+			}
 		}
 	}
 	@discardableResult
@@ -6242,6 +7106,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_arrayInitializer
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterArrayInitializer(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitArrayInitializer(self)
+			}
 		}
 	}
 	@discardableResult
@@ -6344,6 +7220,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_structInitializer
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterStructInitializer(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitStructInitializer(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func structInitializer() throws -> StructInitializerContext {
@@ -6439,6 +7327,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_initializerList
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterInitializerList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitInitializerList(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func initializerList() throws -> InitializerListContext {
@@ -6510,6 +7410,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_typeName
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterTypeName(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitTypeName(self)
+			}
 		}
 	}
 	@discardableResult
@@ -6617,6 +7529,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_abstractDeclarator
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAbstractDeclarator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAbstractDeclarator(self)
+			}
 		}
 	}
 	@discardableResult
@@ -6784,6 +7708,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_abstractDeclaratorSuffix
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAbstractDeclaratorSuffix(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAbstractDeclaratorSuffix(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func abstractDeclaratorSuffix() throws -> AbstractDeclaratorSuffixContext {
@@ -6893,6 +7829,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_parameterDeclarationList
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterParameterDeclarationList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitParameterDeclarationList(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func parameterDeclarationList() throws -> ParameterDeclarationListContext {
@@ -6951,6 +7899,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_parameterDeclaration
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterParameterDeclaration(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitParameterDeclaration(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func parameterDeclaration() throws -> ParameterDeclarationContext {
@@ -7002,6 +7962,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_declarator
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterDeclarator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitDeclarator(self)
+			}
 		}
 	}
 	@discardableResult
@@ -7089,6 +8061,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_statement
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitStatement(self)
+			}
 		}
 	}
 	@discardableResult
@@ -7298,6 +8282,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_labeledStatement
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterLabeledStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitLabeledStatement(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func labeledStatement() throws -> LabeledStatementContext {
@@ -7342,6 +8338,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_rangeExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterRangeExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitRangeExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -7411,6 +8419,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_compoundStatement
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterCompoundStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitCompoundStatement(self)
+			}
 		}
 	}
 	@discardableResult
@@ -7517,6 +8537,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_selectionStatement
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSelectionStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSelectionStatement(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func selectionStatement() throws -> SelectionStatementContext {
@@ -7609,6 +8641,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_switchStatement
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSwitchStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSwitchStatement(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func switchStatement() throws -> SwitchStatementContext {
@@ -7661,6 +8705,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_switchBlock
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSwitchBlock(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSwitchBlock(self)
+			}
 		}
 	}
 	@discardableResult
@@ -7725,6 +8781,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_switchSection
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSwitchSection(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSwitchSection(self)
+			}
 		}
 	}
 	@discardableResult
@@ -7820,6 +8888,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_switchLabel
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterSwitchLabel(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitSwitchLabel(self)
+			}
 		}
 	}
 	@discardableResult
@@ -7966,6 +9046,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_iterationStatement
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterIterationStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitIterationStatement(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func iterationStatement() throws -> IterationStatementContext {
@@ -8040,6 +9132,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_whileStatement
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterWhileStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitWhileStatement(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func whileStatement() throws -> WhileStatementContext {
@@ -8104,6 +9208,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_doStatement
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterDoStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitDoStatement(self)
+			}
 		}
 	}
 	@discardableResult
@@ -8181,6 +9297,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_forStatement
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterForStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitForStatement(self)
+			}
 		}
 	}
 	@discardableResult
@@ -8306,6 +9434,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_forLoopInitializer
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterForLoopInitializer(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitForLoopInitializer(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func forLoopInitializer() throws -> ForLoopInitializerContext {
@@ -8377,6 +9517,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_forInStatement
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterForInStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitForInStatement(self)
+			}
 		}
 	}
 	@discardableResult
@@ -8466,6 +9618,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_jumpStatement
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterJumpStatement(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitJumpStatement(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func jumpStatement() throws -> JumpStatementContext {
@@ -8551,6 +9715,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_expressions
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterExpressions(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitExpressions(self)
+			}
 		}
 	}
 	@discardableResult
@@ -8714,6 +9890,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_expression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitExpression(self)
+			}
 		}
 	}
 
@@ -9119,6 +10307,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_assignmentOperator
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterAssignmentOperator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitAssignmentOperator(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func assignmentOperator() throws -> AssignmentOperatorContext {
@@ -9186,6 +10386,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_castExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterCastExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitCastExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -9261,6 +10473,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_initializer
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterInitializer(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitInitializer(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func initializer() throws -> InitializerContext {
@@ -9316,6 +10540,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_constantExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterConstantExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitConstantExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -9460,6 +10696,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_unaryExpression
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterUnaryExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitUnaryExpression(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func unaryExpression() throws -> UnaryExpressionContext {
@@ -9574,6 +10822,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_unaryOperator
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterUnaryOperator(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitUnaryOperator(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func unaryOperator() throws -> UnaryOperatorContext {
@@ -9646,6 +10906,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_postfixExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterPostfixExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitPostfixExpression(self)
+			}
 		}
 	}
 
@@ -9800,6 +11072,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_postfix
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterPostfix(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitPostfix(self)
+			}
 		}
 	}
 	@discardableResult
@@ -9972,6 +11256,18 @@ open class BAObjectiveCParser: Parser {
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_argumentExpressionList
 		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterArgumentExpressionList(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitArgumentExpressionList(self)
+			}
+		}
 	}
 	@discardableResult
 	 open func argumentExpressionList() throws -> ArgumentExpressionListContext {
@@ -10027,6 +11323,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_argumentExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterArgumentExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitArgumentExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -10125,6 +11433,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_primaryExpression
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterPrimaryExpression(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitPrimaryExpression(self)
+			}
 		}
 	}
 	@discardableResult
@@ -10287,6 +11607,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_constant
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterConstant(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitConstant(self)
+			}
 		}
 	}
 	@discardableResult
@@ -10470,6 +11802,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_stringLiteral
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterStringLiteral(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitStringLiteral(self)
+			}
 		}
 	}
 	@discardableResult
@@ -10734,6 +12078,18 @@ open class BAObjectiveCParser: Parser {
 		override open
 		func getRuleIndex() -> Int {
 			return BAObjectiveCParser.RULE_identifier
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.enterIdentifier(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BAObjectiveCParserListener {
+				listener.exitIdentifier(self)
+			}
 		}
 	}
 	@discardableResult

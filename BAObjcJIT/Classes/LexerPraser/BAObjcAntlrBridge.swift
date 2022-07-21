@@ -18,9 +18,11 @@ import Foundation
         let tokenStream = CommonTokenStream.init(lexer)
         do {
             let parser = try BAObjectiveCParser.init(tokenStream)
+            let parserListener = BAObjectiveCParserIRCreatorListener.init()
+            parser.addParseListener(parserListener)
             let parserTree = try parser.translationUnit()
-            let result = BAOJIRCreator.init(parserTree: parserTree).createIRUnit()
-            return result
+            let umlStr = self._getPlantUMLStr(parserTree)
+            return parserListener.result()
         } catch {
             return BAOJIRUnit.init(valid: false, errorDesc: String.init(format: "Parse code failed: %@", error.localizedDescription))
         }

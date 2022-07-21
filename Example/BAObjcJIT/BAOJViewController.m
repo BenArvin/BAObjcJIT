@@ -35,6 +35,7 @@ for (NSInteger i=0; i<100; i++) { \
     [testIns testInsFunc:content content2:contentB]; \
 } \
 ";
+    testStr = @"[a b];";
     [BAObjcJIT run:testStr error:nil];
 }
 
