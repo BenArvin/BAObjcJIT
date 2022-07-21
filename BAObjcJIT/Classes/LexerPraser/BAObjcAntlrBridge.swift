@@ -10,6 +10,13 @@ import Foundation
 // MARK: - public methods
 @objc public class BAObjcAntlrBridge: NSObject {
     @objc public class func parse(_ code: String?) -> BAOJIRUnit {
+        var str = "asd"
+        let aa = type(of: 124)
+        let xx = type(of: code)
+        let yy = type(of: "abc")
+        var zz = type(of: str)
+        NSLog("")
+        
         guard let code = code else {
             return BAOJIRUnit.init(valid: false, errorDesc: "Parse code failed: code is empty")
         }

@@ -11,6 +11,7 @@
 open class BAObjectiveCParserIRCreatorListener: BAObjectiveCParserListener {
     
     private var _irUnit: BAOJIRUnit = BAOJIRUnit.init()
+    private var _irStack: BAOJStack<BAOJIRCommand> = BAOJStack<BAOJIRCommand>.init()
     
     public init() { }
 	/**
@@ -18,9 +19,7 @@ open class BAObjectiveCParserIRCreatorListener: BAObjectiveCParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterTranslationUnit(_ ctx: BAObjectiveCParser.TranslationUnitContext) {
-        NSLog("")
-    }
+	open func enterTranslationUnit(_ ctx: BAObjectiveCParser.TranslationUnitContext) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -228,7 +227,9 @@ open class BAObjectiveCParserIRCreatorListener: BAObjectiveCParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterMessageExpression(_ ctx: BAObjectiveCParser.MessageExpressionContext) { }
+	open func enterMessageExpression(_ ctx: BAObjectiveCParser.MessageExpressionContext) {
+        self._irStack.push(BAOJIRCommandMsgExp.init())
+    }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -267,7 +268,13 @@ open class BAObjectiveCParserIRCreatorListener: BAObjectiveCParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterKeywordArgument(_ ctx: BAObjectiveCParser.KeywordArgumentContext) { }
+	open func enterKeywordArgument(_ ctx: BAObjectiveCParser.KeywordArgumentContext) {
+        if let lastCmd = self._irStack.top() as? BAOJIRCommandMsgExp {
+            if let selStr = lastCmd.selector {
+                lastCmd.selector = String.init(format: "%@:", selStr)
+            }
+        }
+    }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1501,7 +1508,11 @@ open class BAObjectiveCParserIRCreatorListener: BAObjectiveCParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func visitTerminal(_ node: TerminalNode) { }
+	open func visitTerminal(_ node: TerminalNode) {
+        if let lastCmd = self._irStack.top() as? BAOJIRCommandMsgExp {
+            lastCmd.receiver = node.getText()
+        }
+    }
 	/**
 	 * {@inheritDoc}
 	 *

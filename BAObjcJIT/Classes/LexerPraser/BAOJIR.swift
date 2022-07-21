@@ -81,8 +81,9 @@ import Foundation
     }
 }
 
-@objc open class BAOJIRCommandMemFrame: BAOJIRCommand {
-}
-
-@objc open class BAOJIRCommandExecute: BAOJIRCommand {
+@objc open class BAOJIRCommandMsgExp: BAOJIRCommand {
+    @objc public var receiver: String?
+    @objc public var selector: String?
+    @objc public var params: NSArray = NSArray.init()
+    @objc public var result: String = BAOJUniqueIDDice.roll()
 }
